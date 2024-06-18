@@ -17,6 +17,7 @@ public class Shoot : MonoBehaviour
     void Update()
     {
         playerPos = transform.position;
+        playerRot = new Vector3(0f, 0f, transform.rotation.z);
         //playerRot = transform.rotation;
 
         if (Input.GetKeyDown(KeyCode.Space))

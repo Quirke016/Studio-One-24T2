@@ -14,7 +14,7 @@ public class AsteroidBehavour : MonoBehaviour
     {
         rotSpeed = Random.Range(-200f, 200f);
         speed = Random.Range(1f, 10f);
-        size = Random.Range(0.5f, 2.5f);
+        size = Random.Range(0.25f, 2f);
 
         gameObject.transform.localScale += new Vector3(size, size, 0);
         rb2D = gameObject.GetComponent<Rigidbody2D>();
