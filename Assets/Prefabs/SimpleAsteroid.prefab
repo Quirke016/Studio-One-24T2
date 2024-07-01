@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4170174829705479296}
   - component: {fileID: 3831797547819051878}
   - component: {fileID: 3473348536070488044}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SimpleAsteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,6 +103,7 @@ MonoBehaviour:
   rotSpeed: 0
   size: 0
   speed: 0
+  player: {fileID: 2960223366582816179, guid: f8ea82642eca9d446aa9872c7f74d982, type: 3}
 --- !u!50 &4170174829705479296
 Rigidbody2D:
   serializedVersion: 4
@@ -164,7 +165,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

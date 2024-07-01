@@ -8,6 +8,8 @@ public class AsteroidBehavour : MonoBehaviour
     [SerializeField] float size;
     [SerializeField] float speed;
     Rigidbody2D rb2D;
+    HealthManager hM;
+    GameObject player;
 
     // Start is called before the first frame update
     void Awake()
@@ -15,6 +17,8 @@ public class AsteroidBehavour : MonoBehaviour
         rotSpeed = Random.Range(-200f, 200f);
         speed = Random.Range(1f, 10f);
         size = Random.Range(0.25f, 2f);
+
+        
 
         gameObject.transform.localScale += new Vector3(size, size, 0);
         rb2D = gameObject.GetComponent<Rigidbody2D>();
@@ -31,6 +35,14 @@ public class AsteroidBehavour : MonoBehaviour
     void Update()
     {
         transform.Rotate(0f, 0f, rotSpeed * Time.deltaTime);
+    }
 
+    private void OnCollisionEnter2D()
+    {
+        player = GameObject.Find("Player");
+        hM = player.gameObject.GetComponent<HealthManager>();
+        hM.Damage();
+        Debug.Log("Crash");
+        GameObject.Destroy(gameObject);
     }
 }
