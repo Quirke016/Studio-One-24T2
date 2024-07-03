@@ -103,7 +103,13 @@ MonoBehaviour:
   rotSpeed: 0
   size: 0
   speed: 0
-  player: {fileID: 2960223366582816179, guid: f8ea82642eca9d446aa9872c7f74d982, type: 3}
+  regular: 1
+  splitter: 0
+  explosive: 0
+  shooting: 0
+  alive: 0
+  oblong: 0
+  mine: 0
 --- !u!50 &4170174829705479296
 Rigidbody2D:
   serializedVersion: 4
@@ -165,7 +171,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -179,7 +185,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

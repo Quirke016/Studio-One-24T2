@@ -1,34 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] GameObject bullet;
-    Vector3 playerRot;
-    Vector3 playerPos;
-
+    Vector3 playerShootPos;
+    [SerializeField] GameObject playerShootPosGameObject;
+    [SerializeField] GameObject orientation;
+    bool canShoot;
+    [SerializeField] TextMeshProUGUI canShootNotice;
+    [SerializeField] bool godMode = false;
+    [SerializeField] AudioSource laser;
     private void Start()
     {
         player = gameObject;
+        canShoot = true;
     }
 
     void Update()
     {
-        playerPos = transform.position;
-        playerRot = new Vector3(0f, 0f, transform.rotation.z);
+        playerShootPos = playerShootPosGameObject.transform.position;
         //playerRot = transform.rotation;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && canShoot)
         {
+            laser.Play();
             Shoot();
+            canShoot = false;
+            canShootNotice.text = "Reloading...";
         }
 
         void Shoot()
         {
-            Instantiate(bullet, playerPos, Quaternion.identity);
-            Debug.Log("BANG!");
+            Instantiate(bullet, playerShootPos, orientation.transform.rotation);
+            
+            Debug.Log("Shot bullet!");
+            StartCoroutine(CanShoot());
         }
+    }
+
+    IEnumerator CanShoot()
+    {
+
+        float time = 1.7f;
+
+        if (godMode)
+        {
+            time = 0.1f;
+        }
+
+        yield return new WaitForSeconds(time);
+
+        canShoot = true;
+
+        canShootNotice.text = "Ready To Fire!";
     }
 }
